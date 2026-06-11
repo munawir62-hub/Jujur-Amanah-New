@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MPI PAI Kelas 7: Jujur, Amanah, & Istiqomah</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0f766e', /* Teal 700 */
+                        secondary: '#14b8a6', /* Teal 500 */
+                        accent: '#f59e0b', /* Amber 500 */
+                        dark: '#1e293b' /* Slate 800 */
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Amiri&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .arabic {
+            font-family: 'Amiri', serif;
+            direction: rtl;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Header / Navbar -->
+    <header class="bg-primary text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="bg-white p-2 rounded-lg text-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg md:text-xl">MPI PAI Kelas 7</h1>
+                    <p class="text-xs text-teal-100">Jujur, Amanah, dan Istiqomah • Semester 1</p>
+                </div>
+            </div>
+            <!-- Hamburger menu for mobile -->
+            <button onclick="toggleMobileNav()" class="md:hidden text-white focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto w-full flex-grow flex flex-col md:flex-row">
+        <!-- Sidebar Navigation -->
+        <nav id="sidebar" class="bg-white w-full md:w-64 flex-shrink-0 border-r border-slate-200 p-4 hidden md:block">
+            <div class="space-y-1">
+                <button onclick="switchTab('pendahuluan')" id="btn-pendahuluan" class="tab-btn w-full text-left px-4 py-3 rounded-xl transition duration-200 flex items-center space-x-3 bg-primary text-white font-medium">
+                    <span>🏠</span> <span>Pendahuluan</span>
+                </button>
+                <button onclick="switchTab('peta-konsep')" id="btn-peta-konsep" class="tab-btn w-full text-left px-4 py-3 rounded-xl transition duration-200 flex items-center space-x-3 text-slate-600 hover:bg-slate-100 hover:text-primary">
+                    <span>🗺️</span> <span>Peta Konsep</span>
+                </button>
+                <button onclick="switchTab('materi')" id="btn-materi" class="tab-btn w-full text-left px-4 py-3 rounded-xl transition duration-200 flex items-center space-x-3 text-slate-600 hover:bg-slate-100 hover:text-primary">
+                    <span>📖</span> <span>Pembahasan Materi</span>
+                </button>
+                <button onclick="switchTab('penerapan')" id="btn-penerapan" class="tab-btn w-full text-left px-4 py-3 rounded-xl transition duration-200 flex items-center space-x-3 text-slate-600 hover:bg-slate-100 hover:text-primary">
+                    <span>🌱</span> <span>Penerapan & Kiat</span>
+                </button>
+                <button onclick="switchTab('hikmah')" id="btn-hikmah" class="tab-btn w-full text-left px-4 py-3 rounded-xl transition duration-200 flex items-center space-x-3 text-slate-600 hover:bg-slate-100 hover:text-primary">
+                    <span>✨</span> <span>Hikmah Perilaku</span>
+                </button>
+                <button onclick="switchTab('kuis')" id="btn-kuis" class="tab-btn w-full text-left px-4 py-3 rounded-xl transition duration-200 flex items-center space-x-3 text-slate-600 hover:bg-slate-100 hover:text-primary">
+                    <span>📝</span> <span>Kuis Interaktif</span>
+                </button>
+                <button onclick="switchTab('refleksi')" id="btn-refleksi" class="tab-btn w-full text-left px-4 py-3 rounded-xl transition duration-200 flex items-center space-x-3 text-slate-600 hover:bg-slate-100 hover:text-primary">
+                    <span>💭</span> <span>Lembar Refleksi</span>
+                </button>
+            </div>
+            
+            <div class="mt-8 p-4 bg-teal-50 rounded-xl border border-teal-100 text-center">
+                <span class="text-xs font-semibold text-primary uppercase tracking-wider block mb-1">Pengembang</span>
+                <p class="text-sm font-bold text-slate-700">Guru PAI SMP</p>
+                <p class="text-xs text-slate-500">Merdeka Mengajar</p>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="flex-grow p-4 md:p-8 bg-slate-50 overflow-y-auto">
+            
+            <!-- 1. PENDAHULUAN -->
+            <section id="tab-pendahuluan" class="tab-content block space-y-6">
+                <div class="bg-gradient-to-r from-primary to-secondary text-white p-6 md:p-8 rounded-2xl shadow-md relative overflow-hidden">
+                    <div class="relative z-10">
+                        <span class="bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Selamat Datang</span>
+                        <h2 class="text-2xl md:text-4xl font-bold mt-3 mb-2">Membentuk Karakter Mulia</h2>
+                        <p class="text-teal-50 max-w-2xl text-sm md:text-base">Materi PAI dan Budi Pekerti Kelas VII SMP: Menjadi pribadi yang dicintai Allah SWT dan sesama manusia melalui sifat Jujur, Amanah, dan Istiqomah.</p>
+                        <button onclick="switchTab('peta-konsep')" class="mt-5 bg-accent hover:bg-amber-600 text-slate-900 font-semibold px-5 py-2.5 rounded-xl transition shadow duration-200 flex items-center space-x-2 text-sm">
+                            <span>Mulai Belajar</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                        </button>
+                    </div>
+                    <!-- Background shapes -->
+                    <div class="absolute right-0 bottom-0 opacity-10 translate-x-10 translate-y-10">
+                        <svg width="300" height="300" fill="currentColor" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50"/></svg>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Kompetensi Inti / Capaian Pembelajaran -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="bg-teal-100 text-primary p-2.5 rounded-xl">📍</div>
+                            <h3 class="font-bold text-lg text-slate-800">Tujuan Pembelajaran</h3>
+                        </div>
+                        <ul class="space-y-3 text-sm text-slate-600">
+                            <li class="flex items-start space-x-2">
+                                <span class="text-secondary font-bold">✓</span>
+                                <span>Menjelaskan pengertian sikap jujur, amanah, dan istiqomah dengan benar.</span>
+                            </li>
+                            <li class="flex items-start space-x-2">
+                                <span class="text-secondary font-bold">✓</span>
+                                <span>Menunjukkan dalil naqli dari Al-Qur'an tentang kejujuran, amanah, dan istiqomah.</span>
+                            </li>
+                            <li class="flex items-start space-x-2">
+                                <span class="text-secondary font-bold">✓</span>
+                                <span>Menganalisis contoh perilaku jujur, amanah, dan istiqomah dalam kehidupan sehari-hari.</span>
+                            </li>
+                            <li class="flex items-start space-x-2">
+                                <span class="text-secondary font-bold">✓</span>
+                                <span>Meyakini hikmah positif yang lahir dari penanaman ketiga perilaku tersebut.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Motivasi Karakter -->
+                    <div class="bg-amber-50 p-6 rounded-2xl border border-amber-200 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-amber-700 uppercase tracking-widest block mb-2">💡 Mutiara Hikmah</span>
+                            <blockquote class="italic text-slate-700 font-medium text-base mb-4 leading-relaxed">
+                                "Sesungguhnya kejujuran menuntun kepada kebaikan, dan kebaikan menuntun kepada surga. Dan sesungguhnya kebohongan menuntun kepada kejahatan, dan kejahatan menuntun kepada neraka."
+                            </blockquote>
+                        </div>
+                        <p class="text-xs text-slate-500 font-semibold">— HR. Bukhari dan Muslim</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. PETA KONSEP -->
+            <section id="tab-peta-konsep" class="tab-content hidden space-y-6">
+                <div class="text-center max-w-xl mx-auto mb-6">
+                    <h2 class="text-2xl font-bold text-slate-800">Peta Konsep Materi</h2>
+                    <p class="text-slate-500 text-sm">Pelajari alur hubungan konsep pembentukan karakter Islami melalui diagram interaktif di bawah ini.</p>
+                </div>
+
+                <!-- Interactive Concept Map -->
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center">
+                    <!-- Core Node -->
+                    <div class="bg-gradient-to-r from-primary to-secondary text-white px-6 py-4 rounded-2xl shadow-md text-center max-w-xs mb-8">
+                        <span class="text-xs font-semibold uppercase tracking-widest">Karakter Utama</span>
+                        <h4 class="font-bold text-lg mt-1">Generasi Berakhlak Mulia</h4>
+                    </div>
+
+                    <!-- Connectors & Branches -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full relative z-10">
+                        
+                        <!-- Jujur Card -->
+                        <div onclick="openConceptDetail('jujur')" class="cursor-pointer hover:shadow-md transition duration-200 border border-slate-200 hover:border-teal-400 bg-teal-50/30 p-5 rounded-2xl text-center flex flex-col items-center group">
+                            <div class="bg-emerald-100 text-emerald-700 w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg mb-3 group-hover:scale-105 transition duration-200">1</div>
+                            <h5 class="font-bold text-lg text-slate-800 mb-1">JUJUR</h5>
+                            <p class="text-xs text-slate-500">Kesesuaian ucapan, tindakan, dan kenyataan.</p>
+                            <span class="text-[10px] mt-4 text-primary font-semibold group-hover:underline">Klik untuk detail ➔</span>
+                        </div>
+
+                        <!-- Amanah Card -->
+                        <div onclick="openConceptDetail('amanah')" class="cursor-pointer hover:shadow-md transition duration-200 border border-slate-200 hover:border-teal-400 bg-amber-50/30 p-5 rounded-2xl text-center flex flex-col items-center group">
+                            <div class="bg-amber-100 text-amber-700 w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg mb-3 group-hover:scale-105 transition duration-200">2</div>
+                            <h5 class="font-bold text-lg text-slate-800 mb-1">AMANAH</h5>
+                            <p class="text-xs text-slate-500">Dapat dipercaya dan menjaga tanggung jawab.</p>
+                            <span class="text-[10px] mt-4 text-primary font-semibold group-hover:underline">Klik untuk detail ➔</span>
+                        </div>
+
+                        <!-- Istiqomah Card -->
+                        <div onclick="openConceptDetail('istiqomah')" class="cursor-pointer hover:shadow-md transition duration-200 border border-slate-200 hover:border-teal-400 bg-blue-50/30 p-5 rounded-2xl text-center flex flex-col items-center group">
+                            <div class="bg-blue-100 text-blue-700 w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg mb-3 group-hover:scale-105 transition duration-200">3</div>
+                            <h5 class="font-bold text-lg text-slate-800 mb-1">ISTIQOMAH</h5>
+                            <p class="text-xs text-slate-500">Teguh pendirian dan konsisten berbuat baik.</p>
+                            <span class="text-[10px] mt-4 text-primary font-semibold group-hover:underline">Klik untuk detail ➔</span>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Details Panel inside Concept Map -->
+                    <div id="concept-detail" class="mt-8 w-full p-6 bg-slate-50 rounded-2xl border border-slate-200 hidden">
+                        <div class="flex justify-between items-start mb-3">
+                            <h4 id="detail-title" class="font-bold text-xl text-primary">Nama Konsep</h4>
+                            <button onclick="closeConceptDetail()" class="text-slate-400 hover:text-slate-600 font-bold text-sm">✖ Tutup</button>
+                        </div>
+                        <p id="detail-desc" class="text-slate-600 text-sm leading-relaxed mb-4">Deskripsi konsep.</p>
+                        <div class="bg-white p-4 rounded-xl border border-slate-100">
+                            <h5 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Aspek Penting:</h5>
+                            <ul id="detail-points" class="list-disc list-inside text-sm text-slate-600 space-y-1">
+                                <!-- Dynamic points insertion -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. PEMBAHASAN MATERI -->
+            <section id="tab-materi" class="tab-content hidden space-y-6">
+                <!-- Sub tabs for materials -->
+                <div class="flex overflow-x-auto space-x-2 border-b border-slate-200 pb-2">
+                    <button onclick="switchMateriTab('sub-jujur')" id="materi-btn-jujur" class="materi-tab-btn flex-shrink-0 px-4 py-2 font-bold text-sm rounded-lg bg-primary text-white">1. Jujur (As-Sidqu)</button>
+                    <button onclick="switchMateriTab('sub-amanah')" id="materi-btn-amanah" class="materi-tab-btn flex-shrink-0 px-4 py-2 font-bold text-sm rounded-lg text-slate-600 hover:bg-slate-100">2. Amanah (Al-Amanah)</button>
+                    <button onclick="switchMateriTab('sub-istiqomah')" id="materi-btn-istiqomah" class="materi-tab-btn flex-shrink-0 px-4 py-2 font-bold text-sm rounded-lg text-slate-600 hover:bg-slate-100">3. Istiqomah (Al-Istiqamah)</button>
+                </div>
+
+                <!-- SUB MATERI: JUJUR -->
+                <div id="sub-jujur" class="materi-content block space-y-6">
+                    <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-100 space-y-4">
+                        <div class="flex items-center space-x-2">
+                            <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-1 rounded-md">Materi I</span>
+                            <h3 class="text-2xl font-bold text-slate-800">Menghiasi Diri dengan Kejujuran</h3>
+                        </div>
+                        <p class="text-slate-600 leading-relaxed text-sm md:text-base">
+                            Secara bahasa, <strong>jujur</strong> artinya berkata benar, nyata, atau keselarasan antara berita dengan kenyataan. Kebalikan dari jujur adalah dusta (kadzib). Dalam Islam, jujur merupakan salah satu fondasi utama keimanan seseorang.
+                        </p>
+
+                        <!-- Dalil Jujur -->
+                        <div class="bg-emerald-50/50 p-5 rounded-2xl border border-emerald-100 space-y-3">
+                            <span class="text-xs font-bold text-emerald-700 uppercase tracking-widest block">📖 Dalil Naqli (Al-Qur'an Surat At-Taubah Ayat 119)</span>
+                            <p class="arabic text-right text-2xl md:text-3xl leading-loose my-2 text-slate-800">يَا أَيُّهَا الَّذِينَ آمَنُوا اتَّقُوا اللَّهَ وَكُونُوا مَعَ الصَّادِقِينَ</p>
+                            <p class="text-xs text-slate-500 italic mt-1 leading-relaxed">
+                                "Wahai orang-orang yang beriman! Bertakwalah kepada Allah, dan bersamalah kamu dengan orang-orang yang benar (jujur)."
+                            </p>
+                        </div>
+
+                        <h4 class="font-bold text-slate-800 pt-2">Klasifikasi Sifat Jujur (Imam Al-Ghazali):</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                                <h5 class="font-bold text-sm text-primary mb-1">1. Jujur dalam Niat</h5>
+                                <p class="text-xs text-slate-500">Setiap perbuatan ditujukan murni untuk mencari ridha Allah semata, tanpa pamrih atau riya.</p>
+                            </div>
+                            <div class="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                                <h5 class="font-bold text-sm text-primary mb-1">2. Jujur dalam Perkataan</h5>
+                                <p class="text-xs text-slate-500">Berita yang disampaikan sesuai dengan kenyataan sebenarnya yang terjadi.</p>
+                            </div>
+                            <div class="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                                <h5 class="font-bold text-sm text-primary mb-1">3. Jujur dalam Perbuatan</h5>
+                                <p class="text-xs text-slate-500">Kesesuaian antara lahiriah (tindakan di depan publik) dengan batiniah (di belakang layar).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SUB MATERI: AMANAH -->
+                <div id="sub-amanah" class="materi-content hidden space-y-6">
+                    <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-100 space-y-4">
+                        <div class="flex items-center space-x-2">
+                            <span class="bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-1 rounded-md">Materi II</span>
+                            <h3 class="text-2xl font-bold text-slate-800">Menjaga Amanah dengan Tanggung Jawab</h3>
+                        </div>
+                        <p class="text-slate-600 leading-relaxed text-sm md:text-base">
+                            Secara bahasa, <strong>amanah</strong> bermakna tepercaya, aman, atau tenteram. Menurut istilah, amanah berarti sesuatu yang dipercayakan atau dititipkan kepada orang lain untuk dijaga dan dijalankan sesuai ketentuan yang berlaku. Sifat amanah wajib dimiliki demi terwujudnya keharmonisan sosial.
+                        </p>
+
+                        <!-- Dalil Amanah -->
+                        <div class="bg-amber-50/50 p-5 rounded-2xl border border-amber-100 space-y-3">
+                            <span class="text-xs font-bold text-amber-700 uppercase tracking-widest block">📖 Dalil Naqli (Al-Qur'an Surat Al-Anfal Ayat 27)</span>
+                            <p class="arabic text-right text-2xl md:text-3xl leading-loose my-2 text-slate-800">يَا أَيُّهَا الَّذِينَ آمَنُوا لَا تَخُونُوا اللَّهَ وَالرَّسُولَ وَتَخُونُوا أَمَانَاتِكُمْ وَأَنْتُمْ تَعْلَمُونَ</p>
+                            <p class="text-xs text-slate-500 italic mt-1 leading-relaxed">
+                                "Wahai orang-orang yang beriman! Janganlah kamu mengkhianati Allah dan Rasul, dan (juga) janganlah kamu mengkhianati amanat yang dipercayakan kepadamu, sedang kamu mengetahui."
+                            </p>
+                        </div>
+
+                        <h4 class="font-bold text-slate-800 pt-2">Bentuk-Bentuk Amanah:</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                                <h5 class="font-bold text-sm text-accent mb-1">1. Amanah kepada Allah</h5>
+                                <p class="text-xs text-slate-500">Menjalankan semua kewajiban ibadah, seperti shalat wajib, puasa, dan menjauhi semua larangan-Nya.</p>
+                            </div>
+                            <div class="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                                <h5 class="font-bold text-sm text-accent mb-1">2. Amanah kepada Manusia</h5>
+                                <p class="text-xs text-slate-500">Mengembalikan barang pinjaman, menjaga rahasia orang lain, serta menepati janji yang dibuat.</p>
+                            </div>
+                            <div class="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                                <h5 class="font-bold text-sm text-accent mb-1">3. Amanah kepada Diri Sendiri</h5>
+                                <p class="text-xs text-slate-500">Menjaga kesehatan tubuh, memanfaatkan waktu luang dengan produktif, serta rajin menuntut ilmu.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SUB MATERI: ISTIQOMAH -->
+                <div id="sub-istiqomah" class="materi-content hidden space-y-6">
+                    <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-100 space-y-4">
+                        <div class="flex items-center space-x-2">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-bold px-2.5 py-1 rounded-md">Materi III</span>
+                            <h3 class="text-2xl font-bold text-slate-800">Meneguhkan Hati dengan Istiqomah</h3>
+                        </div>
+                        <p class="text-slate-600 leading-relaxed text-sm md:text-base">
+                            Secara bahasa, <strong>istiqomah</strong> berarti tegak lurus, konsisten, atau kokoh pendirian. Menurut istilah, istiqomah adalah sikap kukuh dalam mempertahankan keimanan dan kebaikan secara konsisten, tidak goyah oleh cobaan atau godaan kesenangan duniawi.
+                        </p>
+
+                        <!-- Dalil Istiqomah -->
+                        <div class="bg-blue-50/50 p-5 rounded-2xl border border-blue-100 space-y-3">
+                            <span class="text-xs font-bold text-blue-700 uppercase tracking-widest block">📖 Dalil Naqli (Al-Qur'an Surat Al-Ahqaf Ayat 13)</span>
+                            <p class="arabic text-right text-2xl md:text-3xl leading-loose my-2 text-slate-800">إِنَّ الَّذِينَ قَالُوا رَبُّنَا اللَّهُ ثُمَّ اسْتَقَامُوا فَلَا خَوْفٌ عَلَيْهِمْ وَلَا هُمْ يَحْزَنُونَ</p>
+                            <p class="text-xs text-slate-500 italic mt-1 leading-relaxed">
+                                "Sesungguhnya orang-orang yang berkata, 'Tuhan kami adalah Allah,' kemudian mereka tetap istiqomah, tidak ada rasa khawatir pada mereka, dan mereka tidak (pula) bersedih hati."
+                            </p>
+                        </div>
+
+                        <h4 class="font-bold text-slate-800 pt-2">Ciri-Ciri Orang yang Istiqomah:</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                                <h5 class="font-bold text-sm text-blue-600 mb-1">Fokus pada Tujuan</h5>
+                                <p class="text-xs text-slate-500">Mampu menyaring pengaruh buruk dari luar dan tetap lurus pada jalan kebenaran.</p>
+                            </div>
+                            <div class="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                                <h5 class="font-bold text-sm text-blue-600 mb-1">Disiplin Beribadah</h5>
+                                <p class="text-xs text-slate-500">Selalu menjaga kontinuitas (keajekan) ibadah sekalipun dalam amalan kecil.</p>
+                            </div>
+                            <div class="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                                <h5 class="font-bold text-sm text-blue-600 mb-1">Sabar dan Tabah</h5>
+                                <p class="text-xs text-slate-500">Menghadapi rintangan dengan sabar serta berlapang dada menerima takdir Allah SWT.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. PENERAPAN & KIAT -->
+            <section id="tab-penerapan" class="tab-content hidden space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Contoh Perilaku -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 space-y-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="bg-teal-100 text-primary p-2 rounded-xl">🏫</div>
+                            <h3 class="font-bold text-lg text-slate-800">Contoh Perilaku Nyata</h3>
+                        </div>
+                        <p class="text-xs text-slate-500">Aplikasi nyata karakter di lingkungan sosial.</p>
+
+                        <!-- Accordion/Tabs for Perilaku -->
+                        <div class="space-y-2">
+                            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                                <span class="font-bold text-xs text-primary block mb-1">Di Lingkungan Rumah</span>
+                                <ul class="list-disc list-inside text-xs text-slate-600 space-y-1">
+                                    <li>Mengakui kesalahan dengan jujur kepada orang tua saat tidak sengaja memecahkan barang.</li>
+                                    <li>Menjaga barang titipan milik adik atau kakak secara amanah.</li>
+                                    <li>Istiqomah melaksanakan shalat lima waktu berjamaah di awal waktu.</li>
+                                </ul>
+                            </div>
+                            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                                <span class="font-bold text-xs text-primary block mb-1">Di Lingkungan Sekolah</span>
+                                <ul class="list-disc list-inside text-xs text-slate-600 space-y-1">
+                                    <li>Mengerjakan ulangan dan ujian sendiri tanpa mencontek/memberi sontekan.</li>
+                                    <li>Menjaga rahasia pribadi teman dan amanah mengembalikan uang kas kelas.</li>
+                                    <li>Istiqomah mengikuti kegiatan literasi dan piket kelas secara bertanggung jawab.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kiat Menumbuhkan -->
+                    <div class="bg-gradient-to-br from-teal-50 to-amber-50 p-6 rounded-2xl border border-slate-150 space-y-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="bg-amber-100 text-amber-700 p-2 rounded-xl">🌱</div>
+                            <h3 class="font-bold text-lg text-slate-800">Kiat Menumbuhkan Sifat Mulia</h3>
+                        </div>
+                        <p class="text-xs text-slate-500">Langkah-langkah strategis menata moralitas diri agar terus berkembang.</p>
+                        
+                        <div class="space-y-3 text-sm text-slate-700">
+                            <div class="flex items-start space-x-3">
+                                <span class="bg-primary text-white w-6 h-6 rounded-full flex items-center justify-center text-xs flex-shrink-0 font-bold">1</span>
+                                <div>
+                                    <h5 class="font-bold text-xs text-slate-800">Menyadari Muraqabatullah</h5>
+                                    <p class="text-xs text-slate-500">Selalu meyakini bahwa Allah Maha Melihat dan Mendengar apa pun perbuatan kita.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="bg-primary text-white w-6 h-6 rounded-full flex items-center justify-center text-xs flex-shrink-0 font-bold">2</span>
+                                <div>
+                                    <h5 class="font-bold text-xs text-slate-800">Mencari Lingkungan Pertemanan Sehat</h5>
+                                    <p class="text-xs text-slate-500">Berteman dengan orang-orang shalih yang selalu menasihati dalam kebenaran.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="bg-primary text-white w-6 h-6 rounded-full flex items-center justify-center text-xs flex-shrink-0 font-bold">3</span>
+                                <div>
+                                    <h5 class="font-bold text-xs text-slate-800">Memulai dari Hal Kecil & Rutin</h5>
+                                    <p class="text-xs text-slate-500">Menerapkan kedisiplinan berbuat baik dari hal terkecil, namun konsisten setiap harinya.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. HIKMAH PERILAKU -->
+            <section id="tab-hikmah" class="tab-content hidden space-y-6">
+                <div class="text-center max-w-xl mx-auto mb-6">
+                    <h2 class="text-2xl font-bold text-slate-800">Hikmah Mulia</h2>
+                    <p class="text-slate-500 text-sm">Temukan manfaat luar biasa di dunia dan akhirat saat Anda memelihara sifat terpuji ini.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Card Hikmah Jujur -->
+                    <div class="bg-white rounded-2xl p-6 shadow-sm border-t-4 border-emerald-500 flex flex-col justify-between">
+                        <div>
+                            <div class="text-3xl mb-3">🕊️</div>
+                            <h4 class="font-bold text-lg text-emerald-800 mb-2">Hikmah Jujur</h4>
+                            <p class="text-slate-600 text-xs leading-relaxed">
+                                Kejujuran akan membawa ketenangan jiwa luar biasa karena tidak ada ketakutan akan terbongkarnya kebohongan. Di samping itu, orang jujur akan selalu dipercaya sesama dan dicintai di hadapan Allah SWT.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Card Hikmah Amanah -->
+                    <div class="bg-white rounded-2xl p-6 shadow-sm border-t-4 border-amber-500 flex flex-col justify-between">
+                        <div>
+                            <div class="text-3xl mb-3">🤝</div>
+                            <h4 class="font-bold text-lg text-amber-800 mb-2">Hikmah Amanah</h4>
+                            <p class="text-slate-600 text-xs leading-relaxed">
+                                Kepercayaan orang lain adalah aset kehidupan yang sangat berharga. Orang yang amanah akan mendapatkan kemudahan jalan hidup, rezeki yang berkah, serta dihormati dalam kehidupan bermasyarakat.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Card Hikmah Istiqomah -->
+                    <div class="bg-white rounded-2xl p-6 shadow-sm border-t-4 border-blue-500 flex flex-col justify-between">
+                        <div>
+                            <div class="text-3xl mb-3">🏆</div>
+                            <h4 class="font-bold text-lg text-blue-800 mb-2">Hikmah Istiqomah</h4>
+                            <p class="text-slate-600 text-xs leading-relaxed">
+                                Istiqomah mendatangkan perlindungan dari malaikat dan ketenteraman hati, terhindar dari rasa khawatir berlebih. Orang istiqomah juga akan memperoleh keberhasilan besar dalam urusan cita-cita mulia mereka.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. KUIS INTERAKTIF -->
+            <section id="tab-kuis" class="tab-content hidden space-y-6">
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-100 max-w-2xl mx-auto">
+                    <!-- Intro Quiz Screen -->
+                    <div id="quiz-intro" class="text-center space-y-4">
+                        <div class="bg-teal-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto text-2xl">📝</div>
+                        <h3 class="text-2xl font-bold text-slate-800">Latihan Soal & Kuis</h3>
+                        <p class="text-slate-500 text-sm">Uji sejauh mana pemahaman Anda mengenai perilaku Jujur, Amanah, dan Istiqomah dengan menjawab 5 soal pilihan ganda.</p>
+                        <button onclick="startQuiz()" class="bg-primary hover:bg-teal-800 text-white font-semibold px-6 py-2.5 rounded-xl transition duration-200 text-sm">Mulai Kuis Sekarang</button>
+                    </div>
+
+                    <!-- Active Quiz Screen -->
+                    <div id="quiz-active" class="hidden space-y-4">
+                        <div class="flex justify-between items-center text-xs text-slate-400 border-b border-slate-100 pb-2">
+                            <span>Soal <strong id="question-number">1</strong> dari 5</span>
+                            <span class="font-semibold text-primary">Kuis Kelas VII</span>
+                        </div>
+                        <div class="w-full bg-slate-100 rounded-full h-1.5">
+                            <div id="quiz-progress-bar" class="bg-primary h-1.5 rounded-full transition-all duration-300" style="width: 20%"></div>
+                        </div>
+
+                        <!-- Question Area -->
+                        <h4 id="question-text" class="text-base md:text-lg font-bold text-slate-800 pt-3">Pertanyaan Kuis...</h4>
+
+                        <!-- Options Area -->
+                        <div id="options-container" class="space-y-2.5 pt-2">
+                            <!-- Dynamic options inject -->
+                        </div>
+
+                        <div id="quiz-feedback" class="mt-4 p-4 rounded-xl hidden text-xs font-semibold">
+                            <!-- Feedback text -->
+                        </div>
+
+                        <div class="flex justify-end pt-4">
+                            <button id="next-question-btn" onclick="nextQuestion()" class="bg-slate-700 hover:bg-slate-800 text-white font-semibold px-5 py-2 rounded-xl text-sm transition hidden">Lanjutkan ➔</button>
+                        </div>
+                    </div>
+
+                    <!-- Quiz Result Screen -->
+                    <div id="quiz-result" class="hidden text-center space-y-5 py-4">
+                        <div id="result-icon" class="text-5xl">🏆</div>
+                        <h3 class="text-2xl font-bold text-slate-800">Kuis Selesai!</h3>
+                        <div class="max-w-xs mx-auto bg-slate-50 p-4 rounded-xl border border-slate-100">
+                            <p class="text-xs text-slate-500 uppercase tracking-wider font-semibold">Skor Anda</p>
+                            <h2 id="result-score" class="text-4xl font-extrabold text-primary mt-1">100</h2>
+                            <p id="result-message" class="text-xs text-slate-600 mt-2">Sangat Baik! Anda menguasai materi dengan luar biasa.</p>
+                        </div>
+                        <div class="flex justify-center space-x-3">
+                            <button onclick="startQuiz()" class="border border-slate-300 text-slate-700 font-semibold px-4 py-2 rounded-xl text-xs hover:bg-slate-50 transition">Ulangi Kuis</button>
+                            <button onclick="switchTab('refleksi')" class="bg-primary hover:bg-teal-800 text-white font-semibold px-4 py-2 rounded-xl text-xs transition">Lanjut ke Lembar Refleksi</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 7. LEMBAR REFLEKSI -->
+            <section id="tab-refleksi" class="tab-content hidden space-y-6">
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-100 max-w-3xl mx-auto space-y-6">
+                    <div class="border-b border-slate-100 pb-4">
+                        <h3 class="text-xl md:text-2xl font-bold text-slate-800">Lembar Refleksi & Penilaian Diri</h3>
+                        <p class="text-slate-500 text-xs md:text-sm mt-1">Mari mengevaluasi penerapan perilaku jujur, amanah, dan istiqomah dalam kehidupan kita pribadi secara jujur.</p>
+                    </div>
+
+                    <form id="refleksi-form" onsubmit="generateRefleksiResult(event)" class="space-y-4">
+                        <!-- Table for reflection check -->
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-xs md:text-sm border-collapse">
+                                <thead>
+                                    <tr class="bg-slate-50 text-slate-600 uppercase tracking-wider font-semibold border-b border-slate-200">
+                                        <th class="p-3">Pertanyaan Refleksi Karakter</th>
+                                        <th class="p-3 text-center">Selalu</th>
+                                        <th class="p-3 text-center">Sering</th>
+                                        <th class="p-3 text-center">Jarang</th>
+                                        <th class="p-3 text-center">Pernah/Tidak</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100 text-slate-700">
+                                    <tr>
+                                        <td class="p-3">1. Saya berkata apa adanya kepada orang tua, guru, dan teman tanpa mengurangi kenyataan.</td>
+                                        <td class="p-3 text-center"><input type="radio" name="ref-1" value="4" required class="accent-primary"></td>
+                                        <td class="p-3 text-center"><input type="radio" name="ref-1" value="3" class="accent-primary"></td>
+                                        <td class="p-3 text-center"><input type="radio" name="ref-1" value="2" class="accent-primary"></td>
+                                        <td class="p-3 text-center"><input type="radio" name="ref-1" value="1" class="accent-primary"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3">2. Saya segera mengembalikan barang/buku milik orang lain/perpustakaan tepat waktu.</td>
+                                        <td class="p-3 text-center"><input type="radio" name="ref-2" value="4" required class="accent-primary"></td>
+                                        <td class="p-3 text-center"><input type="radio" name="ref-2" value="3" class="accent-primary"></td>
+                                        <td class="p-3 text-center"><input type="radio" name="ref-2" value="2" class="accent-primary"></td>
+                                        <td class="p-3 text-center"><input type="radio" name="ref-2" value="1" class="accent-primary"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3">3. Saya mengerjakan tugas-tugas atau ulangan harian secara mandiri tanpa berbuat curang.</td>
+                                        <td class="p-3 text-center"><input type="radio" name="ref-3" value="4" required class="accent-primary"></td>
+                                        <td class="p-3 text-center"><input type="radio" name="ref-3" value="3" class="accent-primary"></td>
+                                        <td class="p-3 text-center"><input type="radio" name="ref-3" value="2" class="accent-primary"></td>
+                                        <td class="p-3 text-center"><input type="radio" name="ref-3" value="1" class="accent-primary"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3">4. Saya berupaya konsisten (istiqomah) menjalankan shalat fardhu lima waktu secara disiplin.</td>
+                                        <td class="p-3 text-center"><input type="radio" name="ref-4" value="4" required class="accent-primary"></td>
+                                        <td class="p-3 text-center"><input type="radio" name="ref-4" value="3" class="accent-primary"></td>
+                                        <td class="p-3 text-center"><input type="radio" name="ref-4" value="2" class="accent-primary"></td>
+                                        <td class="p-3 text-center"><input type="radio" name="ref-4" value="1" class="accent-primary"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3">5. Saya tetap berbuat baik dan belajar rajin meskipun tidak diawasi oleh guru atau orang tua.</td>
+                                        <td class="p-3 text-center"><input type="radio" name="ref-5" value="4" required class="accent-primary"></td>
+                                        <td class="p-3 text-center"><input type="radio" name="ref-5" value="3" class="accent-primary"></td>
+                                        <td class="p-3 text-center"><input type="radio" name="ref-5" value="2" class="accent-primary"></td>
+                                        <td class="p-3 text-center"><input type="radio" name="ref-5" value="1" class="accent-primary"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="flex justify-end pt-3">
+                            <button type="submit" class="bg-primary hover:bg-teal-800 text-white font-semibold px-5 py-2 rounded-xl text-xs transition">Analisis Hasil Refleksi</button>
+                        </div>
+                    </form>
+
+                    <!-- Refleksi Dynamic Report -->
+                    <div id="refleksi-result" class="hidden p-5 bg-gradient-to-br from-teal-50 to-slate-50 rounded-2xl border border-teal-100 space-y-4">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-bold text-slate-800 text-base">Hasil Refleksi Diri Anda</h4>
+                            <span id="ref-status-badge" class="bg-teal-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Mulia</span>
+                        </div>
+                        <p id="ref-summary-text" class="text-slate-650 text-xs md:text-sm leading-relaxed">Status karakter Anda saat ini dalam perilaku mulia.</p>
+                        
+                        <!-- Action Plan Suggestion -->
+                        <div class="bg-white p-4 rounded-xl border border-slate-200">
+                            <span class="text-xs font-bold text-slate-500 uppercase tracking-widest block mb-2">📋 Rencana Aksi (Action Plan) Anda:</span>
+                            <p id="ref-action-text" class="text-xs text-slate-600 leading-relaxed">Rencana aktivitas nyata harian.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-4 text-center text-xs mt-auto border-t border-slate-800">
+        <p>© 2026 Media Pembelajaran Interaktif PAI & Budi Pekerti - SMP Kelas 7</p>
+    </footer>
+
+    <!-- JavaScript Control Logic -->
+    <script>
+        // Tab Navigation Logic
+        function switchTab(tabId) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.add('hidden');
+                tab.classList.remove('block');
+            });
+            // Show active tab
+            document.getElementById('tab-' + tabId).classList.remove('hidden');
+            document.getElementById('tab-' + tabId).classList.add('block');
+
+            // Update tab buttons styles
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-primary', 'text-white', 'font-medium');
+                btn.classList.add('text-slate-600', 'hover:bg-slate-100', 'hover:text-primary');
+            });
+            const activeBtn = document.getElementById('btn-' + tabId);
+            if (activeBtn) {
+                activeBtn.classList.remove('text-slate-600', 'hover:bg-slate-100', 'hover:text-primary');
+                activeBtn.classList.add('bg-primary', 'text-white', 'font-medium');
+            }
+
+            // Close mobile menu on switch
+            const sidebar = document.getElementById('sidebar');
+            if (!sidebar.classList.contains('hidden')) {
+                sidebar.classList.add('hidden');
+            }
+        }
+
+        function toggleMobileNav() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('hidden');
+        }
+
+        // Sub Material Navigation Logic
+        function switchMateriTab(subTabId) {
+            document.querySelectorAll('.materi-content').forEach(subTab => {
+                subTab.classList.add('hidden');
+                subTab.classList.remove('block');
+            });
+            document.getElementById(subTabId).classList.remove('hidden');
+            document.getElementById(subTabId).classList.add('block');
+
+            document.querySelectorAll('.materi-tab-btn').forEach(btn => {
+                btn.classList.remove('bg-primary', 'text-white');
+                btn.classList.add('text-slate-600', 'hover:bg-slate-100');
+            });
+            
+            const mapping = {
+                'sub-jujur': 'materi-btn-jujur',
+                'sub-amanah': 'materi-btn-amanah',
+                'sub-istiqomah': 'materi-btn-istiqomah'
+            };
+            document.getElementById(mapping[subTabId]).classList.add('bg-primary', 'text-white');
+            document.getElementById(mapping[subTabId]).classList.remove('text-slate-600');
+        }
+
+        // Interactive Concept Map Details Data
+        const conceptData = {
+            'jujur': {
+                title: 'Jujur (As-Sidqu)',
+                desc: 'Kejujuran mendasari kepribadian mulia seseorang. Diibaratkan sebagai mutiara batin yang bersinar karena ketulusan ucapan dan hati.',
+                points: [
+                    'Sesuai antara ucapan yang disampaikan dengan fakta yang terjadi.',
+                    'Ditegakkan atas dasar kebenaran demi kemaslahatan bersama.',
+                    'Meliputi jujur dalam niat, perkataan, dan segala perbuatan lahiriyah.'
+                ]
+            },
+            'amanah': {
+                title: 'Amanah (Al-Amanah)',
+                desc: 'Sikap amanah membangun jembatan kepercayaan kokoh antar sesama makhluk hidup serta jaminan ketaatan kepada Sang Pencipta.',
+                points: [
+                    'Amanah terhadap perintah dan kewajiban dari Allah SWT.',
+                    'Amanah dalam pertemanan, kemasyarakatan, serta kerahasiaan hubungan sosial.',
+                    'Amanah kepada kualitas diri sendiri (menjaga waktu, kesehatan, belajar).'
+                ]
+            },
+            'istiqomah': {
+                title: 'Istiqomah (Al-Istiqamah)',
+                desc: 'Keteguhan memelihara kemuliaan amal secara berkesinambungan. Menjadikan amal saleh mendarah daging tanpa dipengaruhi rintangan eksternal.',
+                points: [
+                    'Berdiri teguh menjaga nilai akidah islamiyah dalam segala kondisi.',
+                    'Melakukan aksi kebaikan secara kontinu meskipun berskala kecil (konsisten).',
+                    'Mengamalkan keteguhan sikap dalam membela keadilan dan moralitas.'
+                ]
+            }
+        };
+
+        function openConceptDetail(id) {
+            const data = conceptData[id];
+            document.getElementById('detail-title').innerText = data.title;
+            document.getElementById('detail-desc').innerText = data.desc;
+            
+            const pointsUl = document.getElementById('detail-points');
+            pointsUl.innerHTML = '';
+            data.points.forEach(pt => {
+                const li = document.createElement('li');
+                li.innerText = pt;
+                pointsUl.appendChild(li);
+            });
+
+            document.getElementById('concept-detail').classList.remove('hidden');
+        }
+
+        function closeConceptDetail() {
+            document.getElementById('concept-detail').classList.add('hidden');
+        }
+
+        // Quiz Engine Data & State
+        const quizQuestions = [
+            {
+                q: "Farhan mengembalikan uang kembalian belanja ibunya yang berlebih sebesar Rp 10.000. Sikap Farhan mencerminkan perilaku...",
+                options: ["Amanah", "Jujur", "Istiqomah", "Optimis"],
+                answer: 1, // index of option
+                explanation: "Sikap menceritakan hal sesungguhnya atau bertindak sesuai kenyataan (tanpa menggelapkan uang kelebihan) merupakan bentuk kejujuran."
+            },
+            {
+                q: "Bintang dititipi buku catatan milik guru untuk dibagikan kepada seisi kelas, ia membawanya dengan hati-hati hingga tuntas. Perilaku ini disebut...",
+                options: ["Fathonah", "Tabligh", "Jujur", "Amanah"],
+                answer: 3,
+                explanation: "Menjaga serta menuntaskan titipan atau tugas berharga dari orang lain tanpa ada kerusakan adalah definisi amanah."
+            },
+            {
+                q: "Perhatikan pernyataan ini: 'Aris terus belajar setiap hari secara rutin selama 30 menit meskipun lelah bersekolah'. Perilaku Aris mencontohkan...",
+                options: ["Istiqomah", "Jujur", "Amanah", "Sabar"],
+                answer: 0,
+                explanation: "Berbuat baik secara ajek (konsisten/kontinu) dalam menjaga disiplin belajar merepresentasikan sifat istiqomah."
+            },
+            {
+                q: "Al-Qur'an surat At-Taubah ayat 119 menyatakan agar orang beriman bersanding mengiringi orang-orang yang...",
+                options: ["Konsisten", "Sabar", "Benar/Jujur", "Sehat wal Afiat"],
+                answer: 2,
+                explanation: "Artinya: 'Bertakwalah kepada Allah, dan bersamalah kamu dengan orang-orang yang benar (shadiqin/jujur).'"
+            },
+            {
+                q: "Manakah contoh konkret perilaku amanah di lingkungan kelas/sekolah?",
+                options: [
+                    "Mengumpulkan PR tepat waktu dan membayar uang kas kelas sesuai kesepakatan",
+                    "Meminjam pulpen teman lalu memilikinya secara sepihak",
+                    "Membiarkan halaman kelas kotor saat jadwal piket kita tiba",
+                    "Mencontek jawaban teman yang pandai demi nilai bagus"
+                ],
+                answer: 0,
+                explanation: "Membayar kas kelas dan mengumpulkan tugas tepat waktu adalah bentuk memenuhi tanggung jawab amanat di sekolah."
+            }
+        ];
+
+        let currentQuestionIdx = 0;
+        let quizScore = 0;
+        let answered = false;
+
+        function startQuiz() {
+            currentQuestionIdx = 0;
+            quizScore = 0;
+            answered = false;
+            document.getElementById('quiz-intro').classList.add('hidden');
+            document.getElementById('quiz-result').classList.add('hidden');
+            document.getElementById('quiz-active').classList.remove('hidden');
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            answered = false;
+            document.getElementById('quiz-feedback').classList.add('hidden');
+            document.getElementById('next-question-btn').classList.add('hidden');
+            
+            const currentQ = quizQuestions[currentQuestionIdx];
+            document.getElementById('question-number').innerText = currentQuestionIdx + 1;
+            document.getElementById('question-text').innerText = currentQ.q;
+
+            const progressPercentage = ((currentQuestionIdx + 1) / quizQuestions.length) * 100;
+            document.getElementById('quiz-progress-bar').style.width = progressPercentage + '%';
+
+            const container = document.getElementById('options-container');
+            container.innerHTML = '';
+
+            currentQ.options.forEach((opt, idx) => {
+                const button = document.createElement('button');
+                button.className = "quiz-opt-btn w-full text-left p-3.5 rounded-xl border border-slate-200 hover:bg-slate-50 transition duration-200 text-xs md:text-sm font-medium flex justify-between items-center";
+                button.onclick = () => selectOption(idx, button);
+                button.innerHTML = `<span>${opt}</span><span class="icon"></span>`;
+                container.appendChild(button);
+            });
+        }
+
+        function selectOption(selectedIdx, selectedBtn) {
+            if (answered) return;
+            answered = true;
+
+            const currentQ = quizQuestions[currentQuestionIdx];
+            const feedbackEl = document.getElementById('quiz-feedback');
+            
+            // Highlight options
+            const optButtons = document.querySelectorAll('.quiz-opt-btn');
+            optButtons.forEach((btn, idx) => {
+                btn.disabled = true;
+                if (idx === currentQ.answer) {
+                    btn.classList.add('bg-emerald-50', 'border-emerald-400', 'text-emerald-800');
+                    btn.querySelector('.icon').innerHTML = '✔️';
+                }
+            });
+
+            if (selectedIdx === currentQ.answer) {
+                quizScore += 20;
+                feedbackEl.className = "mt-4 p-4 rounded-xl text-xs font-semibold bg-emerald-100 text-emerald-800 border border-emerald-200";
+                feedbackEl.innerHTML = `<p>🎉 Jawaban Anda Benar!</p><p class="mt-1 font-normal text-slate-650">${currentQ.explanation}</p>`;
+            } else {
+                selectedBtn.classList.add('bg-red-50', 'border-red-400', 'text-red-800');
+                selectedBtn.querySelector('.icon').innerHTML = '❌';
+                feedbackEl.className = "mt-4 p-4 rounded-xl text-xs font-semibold bg-red-100 text-red-800 border border-red-200";
+                feedbackEl.innerHTML = `<p>😢 Jawaban Anda Kurang Tepat.</p><p class="mt-1 font-normal text-slate-650">${currentQ.explanation}</p>`;
+            }
+
+            feedbackEl.classList.remove('hidden');
+            document.getElementById('next-question-btn').classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            currentQuestionIdx++;
+            if (currentQuestionIdx < quizQuestions.length) {
+                loadQuestion();
+            } else {
+                showQuizResult();
+            }
+        }
+
+        function showQuizResult() {
+            document.getElementById('quiz-active').classList.add('hidden');
+            document.getElementById('quiz-result').classList.remove('hidden');
+            
+            const scoreDisplay = document.getElementById('result-score');
+            const messageEl = document.getElementById('result-message');
+            const iconEl = document.getElementById('result-icon');
+            
+            scoreDisplay.innerText = quizScore;
+            
+            if (quizScore >= 80) {
+                iconEl.innerText = '🏆';
+                messageEl.innerText = "Sangat Baik! Anda menguasai materi Jujur, Amanah, dan Istiqomah dengan luar biasa.";
+            } else if (quizScore >= 60) {
+                iconEl.innerText = '👍';
+                messageEl.innerText = "Baik! Anda sudah memahami pokok materi dengan baik. Teruslah belajar.";
+            } else {
+                iconEl.innerText = '📚';
+                messageEl.innerText = "Mari tingkatkan lagi pemahamanmu dengan mengulas kembali dalil dan penjelasan materi di tab sebelah kiri.";
+            }
+        }
+
+        // Reflection Sheet Generator Logic
+        function generateRefleksiResult(e) {
+            e.preventDefault();
+            
+            // Sum all selected values
+            let score = 0;
+            const radios = document.querySelectorAll('#refleksi-form input[type="radio"]:checked');
+            
+            if (radios.length < 5) {
+                alert("Harap isi semua baris refleksi sebelum menganalisis.");
+                return;
+            }
+
+            radios.forEach(r => {
+                score += parseInt(r.value);
+            });
+
+            const resultDiv = document.getElementById('refleksi-result');
+            const badge = document.getElementById('ref-status-badge');
+            const summaryText = document.getElementById('ref-summary-text');
+            const actionText = document.getElementById('ref-action-text');
+
+            resultDiv.classList.remove('hidden');
+
+            // Threshold assessment
+            if (score >= 17) {
+                badge.className = "bg-emerald-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider";
+                badge.innerText = "Istimewa (Sangat Kuat)";
+                summaryText.innerHTML = "Subhanallah! Berdasarkan hasil evaluasi, Anda telah konsisten menghidupkan nilai-nilai <strong>Jujur, Amanah, dan Istiqomah</strong> dalam ritme keseharian. Jiwa mulia ini wajib dipertahankan.";
+                actionText.innerHTML = "Terus pertahankan kejujuran akademik. Cobalah menjadi agen keteladanan dengan mengajak rekan sekelas membiasakan pengerjaan tugas mandiri dan disiplin waktu shalat.";
+            } else if (score >= 12) {
+                badge.className = "bg-blue-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider";
+                badge.innerText = "Berkembang Baik";
+                summaryText.innerHTML = "Alhamdulillah! Sifat mulia Anda sudah berkembang dengan stabil. Namun, adakalanya hambatan kemalasan atau lingkungan sesaat mengganggu keajekan perilaku Anda.";
+                actionText.innerHTML = "Fokus pada konsistensi (Istiqomah). Buatlah daftar target harian (misal, merapikan kamar tidur sendiri atau mengumpulkan tugas tepat waktu) lalu centang setiap berhasil dituntaskan.";
+            } else {
+                badge.className = "bg-amber-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider";
+                badge.innerText = "Butuh Bimbingan";
+                summaryText.innerHTML = "Hasil refleksi mendeteksi Anda masih sering bergelut dengan keraguan, takut tidak dihargai, atau sesekali lalai dalam mengemban amanah hidup.";
+                actionText.innerHTML = "Ayo mulai dari hal terkecil: Akui kebenaran sekalipun terasa berat demi ketenteraman batin. Mintalah bimbingan guru/orang tua dan buat komitmen harian bebas kecurangan.";
+            }
+            
+            // Auto scroll down to view result
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
